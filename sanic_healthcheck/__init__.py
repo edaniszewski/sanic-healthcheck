@@ -1,7 +1,7 @@
 """sanic_healthcheck: health checks for your Sanic applications."""
 
 __title__ = 'sanic_healthcheck'
-__version__ = '0.1.0'
+__version__ = '0.1.1'
 __description__ = 'Health checks for your Sanic applications'
 __author__ = 'Erick Daniszewski'
 __author_email__ = 'edaniszewski@gmail.com'

@@ -1,6 +1,7 @@
 """The base class for all implementations of a checker."""
 
 import abc
+import asyncio
 import logging
 import sys
 import time
@@ -128,7 +129,7 @@ class BaseChecker(metaclass=abc.ABCMeta):
         """
         raise NotImplementedError
 
-    def exec_check(self, check: Callable) -> Dict:
+    async def exec_check(self, check: Callable) -> Dict:
         """Execute a single check and generate a dictionary result from the
         result of the check.
 
@@ -139,7 +140,10 @@ class BaseChecker(metaclass=abc.ABCMeta):
             A dictionary containing the results of the check.
         """
         try:
-            passed, msg = check()
+            if asyncio.iscoroutinefunction(check):
+                passed, msg = await check()
+            else:
+                passed, msg = check()
         except Exception:
             log.exception(
                 f'Exception while running {self.__class__.__name__} check')

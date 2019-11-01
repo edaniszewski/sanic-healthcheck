@@ -21,6 +21,17 @@ whether or not the check passed, and the string is the message that is output fo
 
 Exceptions raised in the check are caught and result in the check returning a failure state.
 
+Check functions may also be asynchronous
+
+.. code-block:: python
+
+  async def check_db_connection():
+      ok = await db.ping()
+      if ok:
+          return True, "successfully pinged DB"
+      else:
+          return False, "failed to ping DB"
+
 
 Health Check
 ------------

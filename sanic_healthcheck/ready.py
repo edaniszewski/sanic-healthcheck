@@ -31,7 +31,8 @@ class ReadyCheck(BaseChecker):
 
         results = []
         for check in self.checks:
-            results.append(self.exec_check(check))
+            result = await self.exec_check(check)
+            results.append(result)
 
         passed = all((r['passed'] for r in results))
         if passed:

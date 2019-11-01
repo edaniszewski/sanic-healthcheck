@@ -124,7 +124,7 @@ class HealthCheck(BaseChecker):
             if not self.no_cache and check in self.cache and self.cache[check].get('expires') >= time.time():
                 results.append(self.cache[check])
             else:
-                result = self.exec_check(check)
+                result = await self.exec_check(check)
                 if not self.no_cache:
                     if result.get('passed'):
                         ttl = self.success_ttl
