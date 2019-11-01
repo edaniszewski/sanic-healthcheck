@@ -42,7 +42,6 @@ setup(
     keywords="sanic health healthcheck liveness readiness",
     classifiers=[
         'Environment :: Web Environment',
-        'Framework :: Sanic',
         'Intended Audience :: Developers',
         'Natural Language :: English',
         'Programming Language :: Python',
